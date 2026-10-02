@@ -1,0 +1,14 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Packaged skill archives are release artifacts, not source
+*.skill
+*.zip
+
+# Local evaluation workspaces
+*-workspace/
+evals/
