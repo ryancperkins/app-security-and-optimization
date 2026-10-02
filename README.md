@@ -2,7 +2,7 @@
 
 A Claude Code skill that keeps security, privacy, production readiness, and performance in the room while an application is being built, not only when someone remembers to ask for an audit.
 
-It has three parts. **Operating rules** make Claude threat-model first and tell it which security changes it may make alone, which need your approval, and which are never acceptable. **The catalog** holds 140 concrete failure patterns with their fixes across fourteen domains: network, authentication, authorization and tenancy, API input, browser boundaries, payments and webhooks, supply chain, AI features and agents, observability, performance, delivery and backups, compliance, hardening controls, and privacy. **The workflow** scopes an app, audits only the domains it has, and reports findings with file-and-line evidence and stable entry IDs.
+It has three parts. **Operating rules** make Claude threat-model first and tell it which security changes it may make alone, which need your approval, and which are never acceptable. **The catalog** holds 141 concrete failure patterns with their fixes across fourteen domains: network, authentication, authorization and tenancy, API input, browser boundaries, payments and webhooks, supply chain, AI features and agents, observability, performance, delivery and backups, compliance, hardening controls, and privacy. **The workflow** scopes an app, audits only the domains it has, and reports findings with file-and-line evidence and stable entry IDs.
 
 It is written for the kind of app that gets built quickly, often with heavy AI assistance, where the defaults fail in the same recurring ways: the API trusts the ID in the URL, the webhook is never verified, the price lives in the frontend, the service-role key bypasses every RLS policy, the agent fetches any URL it is given, personal data is collected with no plan to delete it.
 
@@ -95,7 +95,7 @@ app-security-and-optimization/
 ├── README.md
 ├── LICENSE
 └── references/
-    ├── 01-network-infrastructure-and-transport.md       NET-01 … NET-12
+    ├── 01-network-infrastructure-and-transport.md       NET-01 … NET-13
     ├── 02-authentication-sessions-and-tokens.md         AUTH-01 … AUTH-15
     ├── 03-authorization-tenancy-and-data-access.md      ACC-01 … ACC-11
     ├── 04-api-input-validation-and-contracts.md         API-01 … API-07

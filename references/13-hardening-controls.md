@@ -155,6 +155,7 @@ See API-01 for the rule and the direct-to-endpoint test.
 - Cap the size. Five megabytes is a worked example.
 - Do not trust the file extension or the client-declared type for anything that matters; check the file's magic bytes.
 - Store uploads outside the web root, under generated names, and serve them through a controlled path.
+- If uploads go to a cloud storage bucket, configure the bucket per NET-13: private by default, pre-signed URLs for private objects, separate buckets for public assets, access logging on.
 
 ---
 

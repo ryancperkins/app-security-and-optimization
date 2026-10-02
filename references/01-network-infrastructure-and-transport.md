@@ -1,6 +1,6 @@
 # Network, Infrastructure, and Transport
 
-Service-to-service trust, edge protection and firewalls, rate limiting, infrastructure dependencies, self-managed servers, mobile transport, outbound email, and dynamic scanning.
+Service-to-service trust, edge protection and firewalls, rate limiting, infrastructure dependencies, self-managed servers, mobile transport, outbound email, dynamic scanning, and cloud storage buckets.
 
 Entry format: **Risk** is what goes wrong. **Fix** is the change to make. **Caveat** records where a common version of the advice overstates its case. **Check** marks an item where the risk is clear but the remedy depends on the application. **Test** names a concrete way to prove the fix.
 
@@ -121,3 +121,20 @@ Entry format: **Risk** is what goes wrong. **Fix** is the change to make. **Cave
 **Fix.** Run OWASP ZAP or Burp Suite against the application, alongside automated testing. The first scan of an application that has never been scanned usually finds a meaningful list of issues.
 
 **Caveat.** Active scans go only against environments you own and have explicitly authorized. Never point a scanner at production systems you do not control.
+
+---
+
+### NET-13: The storage bucket is public and holds more than images
+
+**Risk.** An upload feature needed somewhere to put files, so the bucket was set to public read to make the app serve images without authorization errors. The same bucket also holds database backups, user exports, and configuration files. Anyone who finds the URL downloads all of it. Bucket names built from the company name and a purpose, such as `company-uploads` or `company-backups`, are enumerated and scanned at scale, and without access logging the downloads leave no record: no IP addresses, no timestamps, no file access history.
+
+**Fix.**
+- Separate public assets from private data into different buckets. Public assets get public read, ideally served through a CDN with origin access rather than a public bucket. Everything else stays private and is served through pre-signed URLs that expire.
+- Keep account-level public-access blocking on, so a single misconfigured bucket cannot become public.
+- Use randomized bucket names that do not contain the company name, the environment, or the data purpose.
+- Enable server access logging on every bucket and alert on unusual download volume or access from unexpected IP ranges.
+- Cloud storage should store data, not serve it to anyone who asks.
+
+**Caveat.** Current provider defaults are private; the exposure comes from someone making the bucket public to fix an authorization error. Fix the authorization, not the bucket. Randomized names reduce enumeration and are not an access control.
+
+**Test.** Request a private object's URL without a signature from outside the app and confirm it is denied. Confirm the access log recorded the attempt.

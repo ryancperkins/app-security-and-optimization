@@ -133,7 +133,7 @@ Everything blank is a domain you can skip. Everything filled in selects referenc
 
 | Signal in the inventory | Read |
 |---|---|
-| Multiple services, a proxy, a VPS, public endpoints, mobile transport, outbound email | `references/01-network-infrastructure-and-transport.md` |
+| Multiple services, a proxy, a VPS, public endpoints, mobile transport, outbound email, cloud storage buckets | `references/01-network-infrastructure-and-transport.md` |
 | Any login, session, token, password reset, magic link, OAuth, or SSO | `references/02-authentication-sessions-and-tokens.md` |
 | Resource IDs in routes, admin pages, multi-tenant data, RLS, update handlers | `references/03-authorization-tenancy-and-data-access.md` |
 | Form handlers, search, raw SQL, email templates, GraphQL, public API contracts | `references/04-api-input-validation-and-contracts.md` |
@@ -238,6 +238,7 @@ When there is no time for a full audit, check these first. Each line points at t
 - Do agents and AI tools see only the current user's records, with their own identity and credentials, and is model output validated before use? (AI-02, AI-01, AI-04, AI-05)
 - Are there indexes on filtered columns, selective column lists, and slow-query logging? (PERF-01)
 - Are login and other sensitive endpoints rate limited, with counters in a shared store when more than one instance runs? (NET-04, HARD-11, ACC-03)
+- Is any storage bucket public, and does it hold anything besides served assets? (NET-13)
 - Is personal data classified, collected against a purpose, and deletable from every store? (PRIV-01, PRIV-02, PRIV-03)
 - Is the production branch protected, are environments separated, and has a restore from backup been tested? (OPS-01, OPS-02, OPS-05)
 
@@ -252,7 +253,7 @@ When there is no time for a full audit, check these first. Each line points at t
 
 | File | Entries | Covers |
 |---|---|---|
-| `references/01-network-infrastructure-and-transport.md` | NET-01 to NET-12 | Segmentation, mTLS and service tokens, WAF and Fail2Ban, origin protection, rate limiting, dependency pinning, server hardening, mobile transport, email authentication, scanners |
+| `references/01-network-infrastructure-and-transport.md` | NET-01 to NET-13 | Segmentation, mTLS and service tokens, WAF and Fail2Ban, origin protection, rate limiting, dependency pinning, server hardening, mobile transport, email authentication, scanners, storage buckets |
 | `references/02-authentication-sessions-and-tokens.md` | AUTH-01 to AUTH-15 | Magic links, session fixation, redirect abuse, password reset, JWT, PKCE and state, OAuth redirects, token storage and lifetimes, idle sessions, provider choice |
 | `references/03-authorization-tenancy-and-data-access.md` | ACC-01 to ACC-11 | Ownership checks, mass assignment, admin surfaces, RLS and service roles, tenant isolation, tenant-scoped caches, RBAC across layers, direct DB access |
 | `references/04-api-input-validation-and-contracts.md` | API-01 to API-07 | Server-side schemas, raw SQL, template injection, GraphQL introspection, context-specific encoding, API versioning |
