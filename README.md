@@ -13,14 +13,20 @@ The skill is self-contained. It depends on no other skill, plugin, or file outsi
 Personal, available in every project:
 
 ```bash
-git clone https://github.com/<you>/app-security-and-optimization.git ~/.claude/skills/app-security-and-optimization
+git clone https://github.com/ryancperkins/app-security-and-optimization.git ~/.claude/skills/app-security-and-optimization
 ```
 
 Project-scoped, shared with everyone who clones the repository:
 
 ```bash
 mkdir -p .claude/skills
-git clone https://github.com/<you>/app-security-and-optimization.git .claude/skills/app-security-and-optimization
+git clone https://github.com/ryancperkins/app-security-and-optimization.git .claude/skills/app-security-and-optimization
+```
+
+With the community skills installer:
+
+```bash
+npx skills add ryancperkins/app-security-and-optimization
 ```
 
 Or copy the folder to either location without git. Claude Code picks the skill up on the next session. Invoke it directly with `/app-security-and-optimization`.
